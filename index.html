@@ -10,34 +10,39 @@
         <main>
             <div id="left-container">
                 <h1>Library</h1>
-                <input  class="userInputs" type="text" id="title" placeholder="Please enter the title." required>
-                <input  class="userInputs"  type="text" id="author" placeholder="Please enter the author." required>
-                <input  class="userInputs"  type="number" id="page-length" placeholder="Please enter the page length." required>
-                <label  for="read-status">Have you read this book?</label>
-                    <select class="userInputs" name="read-status-prompt" id="read-status">
-                        <option value="">Please choose an option.</option>
-                        <option value="Read it">I have read this book.</option>
-                        <option value="Reading it">I am reading this book.</option>
-                        <option value="Wish to read">I wish to read this book.</option>
-                    </select>
-                <button   class="userInputs" id="addBook">ADD BOOK</button>
+                <form>
+                    <input class="userInputs" type="text" id="title" placeholder="Please enter the title." required>
+                    <input class="userInputs" type="text" id="author" placeholder="Please enter the author." required>
+                    <input class="userInputs" type="number" id="page-length" placeholder="Please enter the page length." required>
+                    <label for="read-status">Have you read this book?</label>
+                        <select class="userInputs" name="read-status-prompt" id="read-status" required>
+                            <option value="">Please choose an option.</option>
+                            <option value="Read it">I have read this book.</option>
+                            <option value="Reading it">I am reading this book.</option>
+                            <option value="Wish to read">I wish to read this book.</option>
+                        </select>
+                    <input type="submit" id="addBook" value="Add Book">
+                </form>
             </div>
             <div id="right-container">
-                <table id="displayHeader">
-                    <tr class="displayHeader">
-                        <th class="bookInfoDisplay">TITLE</th>
-                        <th class="bookInfoDisplay">AUTHOR</th>
-                        <th class="bookInfoDisplay">PAGE LENGTH</th>
-                        <th class="bookInfoDisplay" id="readStatusDisplay">READ STATUS</th>
-                        <th class="bookInfoDisplay" id="removeBook">REMOVE BOOK</th>
-                    </tr>
-                    <tr class="newBookInfo">
-                        <td>Amos McGee</td>
-                        <td>Someone Good</div>
-                        <td>15</td>
-                        <td>read</td>
-                        <td>remove?</td>
-                    </tr>
+                <table>
+                    <thead>
+                        <tr class="displayHeader">
+                            <th class="bookInfoDisplay">TITLE</th>
+                            <th class="bookInfoDisplay">AUTHOR</th>
+                            <th class="bookInfoDisplay">PAGE LENGTH</th>
+                            <th class="bookInfoDisplay" id="readStatusDisplay">READ STATUS</th>
+                            <th class="bookInfoDisplay" id="removeBook">REMOVE BOOK</th>
+                        </tr>
+                    <tbody>
+                        <tr class="newBookInfo">
+                            <td>Amos McGee</td>
+                            <td>Someone Good</div>
+                            <td>15</td>
+                            <td>read</td>
+                            <td>remove?</td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
 
