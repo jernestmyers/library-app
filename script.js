@@ -32,6 +32,7 @@ function displayBook(index, bookArray) {
         removeBookColumn.appendChild(removeBookButton);
         removeBookButton.textContent = `Remove`;
         removeBookButton.classList.add(`removeBook`);
+        removeBookButton.setAttribute(`id`, `${index}`);
         removeBookButton.addEventListener(`click`, removeBookFromLibrary);
     // }
 }
@@ -52,9 +53,10 @@ addBookButton.addEventListener(`click`, (e) => {
     }
 })
 
-function removeBookFromLibrary() {
-    console.log(`here`);
-    
+function removeBookFromLibrary(e) {
+    const bookIndexToRemove = e.currentTarget.id;
+    console.log(e.currentTarget.id);
+    myLibrary.splice(bookIndexToRemove, 1);
 }
 
 
