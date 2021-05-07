@@ -27,6 +27,7 @@ function displayBook(index, bookArray) {
         newPagesColumn.textContent = bookArray[index].pages;
         
         const newStatusColumn = newRow.insertCell(3);
+        // const updateStatusContainer = document.createElement(`div`);
         const updateStatusSelector = document.createElement(`select`);
         const option1 = document.createElement(`option`);
         const option2 = document.createElement(`option`);
@@ -44,6 +45,7 @@ function displayBook(index, bookArray) {
         option3.textContent = `Reading it`;
         option4.textContent = `Wish to read`;
         newStatusColumn.textContent = bookArray[index].readStatus;
+        // updateStatusContainer.appendChild(updateStatusSelector);
         newStatusColumn.appendChild(updateStatusSelector);
         updateStatusSelector.setAttribute(`id`, `${index}`);
         updateStatusSelector.addEventListener(`change`, updateReadStatus);
@@ -89,9 +91,12 @@ function updateBookIndex(indexRemoved) {
 
 updateReadStatus.prototype = Object.create(Book);
 function updateReadStatus(e) {
-    console.log(e.currentTarget.value);
+    const statusToUpdate = e.currentTarget.parentElement;
+    console.log(statusToUpdate);
+    const newReadStatus = e.currentTarget.value;
     const bookIndexToUpdate = e.currentTarget.id;
     myLibrary[bookIndexToUpdate].readStatus = e.currentTarget.value;
+    statusToUpdate.textContent = newReadStatus;
     console.log(myLibrary);
 }
 
