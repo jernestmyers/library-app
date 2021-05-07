@@ -25,10 +25,14 @@ function displayBook(index, bookArray) {
         const newStatusColumn = newRow.insertCell(3);
         const removeBookColumn = newRow.insertCell(4);
         const removeBookButton = document.createElement(`button`);
+        const changeStatusButton = document.createElement(`button`);
+        changeStatusButton.textContent = `Update`;
+        newStatusColumn.textContent = bookArray[index].readStatus;
+        newStatusColumn.appendChild(changeStatusButton);
+        changeStatusButton.addEventListener(`click`, changeReadStatus);
         newTitleColumn.textContent = bookArray[index].title;
         newAuthorColumn.textContent = bookArray[index].author;
         newPagesColumn.textContent = bookArray[index].pages;
-        newStatusColumn.textContent = bookArray[index].readStatus;
         removeBookColumn.appendChild(removeBookButton);
         removeBookButton.textContent = `Remove`;
         removeBookButton.classList.add(`removeBook`);
@@ -55,11 +59,25 @@ addBookButton.addEventListener(`click`, (e) => {
 
 function removeBookFromLibrary(e) {
     const bookIndexToRemove = e.currentTarget.id;
-    console.log(e.currentTarget.id);
+    const tr = e.currentTarget.parentElement.parentElement;
+    const tbody = tr.parentElement;
+    // console.log(e.currentTarget.id);
+    // console.log(tr);
+    // console.log(tbody);
     myLibrary.splice(bookIndexToRemove, 1);
+    tbody.removeChild(tr);
+    updateBookIndex(bookIndexToRemove);
 }
 
+function updateBookIndex(indexRemoved) {
+    for (let i = indexRemoved; i < myLibrary.length; i++) {
+        myLibrary[i].libraryIndex = i;
+    }
+};
 
+function changeReadStatus(e) {
+    console.log(`here`);
+}
 
 // userInputFields.forEach((userInputFields) => {
     // userInputFields.addEventListener(`invalid`, (e) => {
