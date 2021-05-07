@@ -20,19 +20,36 @@ function displayBook(index, bookArray) {
         const tableDisplay = document.querySelector(`tbody`);
         const newRow = tableDisplay.insertRow();
         const newTitleColumn = newRow.insertCell(0);
+        newTitleColumn.textContent = bookArray[index].title;
         const newAuthorColumn = newRow.insertCell(1);
+        newAuthorColumn.textContent = bookArray[index].author;
         const newPagesColumn = newRow.insertCell(2);
+        newPagesColumn.textContent = bookArray[index].pages;
+        
         const newStatusColumn = newRow.insertCell(3);
+        const updateStatusSelector = document.createElement(`select`);
+        const option1 = document.createElement(`option`);
+        const option2 = document.createElement(`option`);
+        const option3 = document.createElement(`option`);
+        const option4 = document.createElement(`option`);
+        // option2.setAttribute(`value`, `Read it`);
+        // option3.setAttribute(`value`, `Reading it`);
+        // option4.setAttribute(`value`, `Wish to read`);
+        updateStatusSelector.appendChild(option1);
+        updateStatusSelector.appendChild(option2);
+        updateStatusSelector.appendChild(option3);
+        updateStatusSelector.appendChild(option4);
+        option1.textContent = `Update`
+        option2.textContent = `Read it`;
+        option3.textContent = `Reading it`;
+        option4.textContent = `Wish to read`;
+        newStatusColumn.textContent = bookArray[index].readStatus;
+        newStatusColumn.appendChild(updateStatusSelector);
+        updateStatusSelector.setAttribute(`id`, `${index}`);
+        updateStatusSelector.addEventListener(`change`, updateReadStatus);
+        
         const removeBookColumn = newRow.insertCell(4);
         const removeBookButton = document.createElement(`button`);
-        const changeStatusButton = document.createElement(`button`);
-        changeStatusButton.textContent = `Update`;
-        newStatusColumn.textContent = bookArray[index].readStatus;
-        newStatusColumn.appendChild(changeStatusButton);
-        changeStatusButton.addEventListener(`click`, changeReadStatus);
-        newTitleColumn.textContent = bookArray[index].title;
-        newAuthorColumn.textContent = bookArray[index].author;
-        newPagesColumn.textContent = bookArray[index].pages;
         removeBookColumn.appendChild(removeBookButton);
         removeBookButton.textContent = `Remove`;
         removeBookButton.classList.add(`removeBook`);
@@ -44,14 +61,9 @@ function displayBook(index, bookArray) {
 const userInputFields = document.querySelectorAll(`.userInputs`);
 const inputArray = Array.from(userInputFields);
 const addBookButton = document.querySelector(`#addBook`);
-// const buttonToRemoveBook = document.querySelectorAll(`.removeBook`);
 
 addBookButton.addEventListener(`click`, (e) => {
     e.preventDefault();
-    // console.log(inputArray[0].value);
-    // console.log(inputArray[1].value);
-    // console.log(inputArray[2].value);
-    // console.log(inputArray[3].value);
     if (inputArray[0].value && inputArray[1].value && inputArray[2].value && inputArray[3].value) {
         addBookToLibraryArray(inputArray[0].value, inputArray[1].value, inputArray[2].value, inputArray[3].value)
     }
@@ -75,8 +87,19 @@ function updateBookIndex(indexRemoved) {
     }
 };
 
-function changeReadStatus(e) {
-    console.log(`here`);
+// const updateStatus = Object.create(Book);
+// Book.prototype.updateReadStatus = function() {
+    // console.log(e.currentTarget.value);
+// };
+
+function updateReadStatus(e) {
+    // Book.prototype.changeReadStatus = function(e) {
+        console.log(e.currentTarget.value);
+        const bookIndexToUpdate = e.currentTarget.id;
+        myLibrary[bookIndexToUpdate].readStatus = e.currentTarget.value;
+        e.currentTarget.textContent = `Update`;
+        console.log(myLibrary);
+    // }
 }
 
 // userInputFields.forEach((userInputFields) => {
