@@ -87,19 +87,12 @@ function updateBookIndex(indexRemoved) {
     }
 };
 
-// const updateStatus = Object.create(Book);
-// Book.prototype.updateReadStatus = function() {
-    // console.log(e.currentTarget.value);
-// };
-
+updateReadStatus.prototype = Object.create(Book);
 function updateReadStatus(e) {
-    // Book.prototype.changeReadStatus = function(e) {
-        console.log(e.currentTarget.value);
-        const bookIndexToUpdate = e.currentTarget.id;
-        myLibrary[bookIndexToUpdate].readStatus = e.currentTarget.value;
-        e.currentTarget.textContent = `Update`;
-        console.log(myLibrary);
-    // }
+    console.log(e.currentTarget.value);
+    const bookIndexToUpdate = e.currentTarget.id;
+    myLibrary[bookIndexToUpdate].readStatus = e.currentTarget.value;
+    console.log(myLibrary);
 }
 
 // userInputFields.forEach((userInputFields) => {
