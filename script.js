@@ -8,6 +8,21 @@ function Book(title, author, pages, readStatus) {
         this.libraryIndex = myLibrary.length
 }
 
+// submits and resets the inputs for the book info
+const userInputFields = document.querySelectorAll(`.userInputs`);
+const inputArray = Array.from(userInputFields);
+const addBookButton = document.querySelector(`#addBook`);
+
+    addBookButton.addEventListener(`click`, (e) => {
+        const inputsToReset = document.querySelector(`#addBookForm`)
+        e.preventDefault();
+        if (inputArray[0].value && inputArray[1].value && inputArray[2].value && inputArray[3].value) {
+            addBookToLibraryArray(inputArray[0].value, inputArray[1].value, inputArray[2].value, inputArray[3].value)
+            inputsToReset.reset();
+        }
+    })
+
+// instantiates the book object constructor
 function addBookToLibraryArray(title, author, pages, readStatus) {
     const bookToAdd = new Book(title, author, pages, readStatus);
     myLibrary.push(bookToAdd);
@@ -15,10 +30,12 @@ function addBookToLibraryArray(title, author, pages, readStatus) {
     displayBook(bookIndex, myLibrary);
 }
 
+// creates a new row and columns to fill in with book info and includes a remove button and calls a function to build the readStatus selector
 function displayBook(index, bookArray) {
     // for (let i = 0; i < bookArray.length; i++) {
         const tableDisplay = document.querySelector(`tbody`);
         const newRow = tableDisplay.insertRow();
+        newRow.classList.add(`newBookInfo`)
         const newTitleColumn = newRow.insertCell(0);
         newTitleColumn.textContent = bookArray[index].title;
         const newAuthorColumn = newRow.insertCell(1);
@@ -27,28 +44,8 @@ function displayBook(index, bookArray) {
         newPagesColumn.textContent = bookArray[index].pages;
         
         const newStatusColumn = newRow.insertCell(3);
-        // const updateStatusContainer = document.createElement(`div`);
-        const updateStatusSelector = document.createElement(`select`);
-        const option1 = document.createElement(`option`);
-        const option2 = document.createElement(`option`);
-        const option3 = document.createElement(`option`);
-        const option4 = document.createElement(`option`);
-        // option2.setAttribute(`value`, `Read it`);
-        // option3.setAttribute(`value`, `Reading it`);
-        // option4.setAttribute(`value`, `Wish to read`);
-        updateStatusSelector.appendChild(option1);
-        updateStatusSelector.appendChild(option2);
-        updateStatusSelector.appendChild(option3);
-        updateStatusSelector.appendChild(option4);
-        option1.textContent = `Update`
-        option2.textContent = `Read it`;
-        option3.textContent = `Reading it`;
-        option4.textContent = `Wish to read`;
         newStatusColumn.textContent = bookArray[index].readStatus;
-        // updateStatusContainer.appendChild(updateStatusSelector);
-        newStatusColumn.appendChild(updateStatusSelector);
-        updateStatusSelector.setAttribute(`id`, `${index}`);
-        updateStatusSelector.addEventListener(`change`, updateReadStatus);
+        buildReadStatusSelector(newStatusColumn);
         
         const removeBookColumn = newRow.insertCell(4);
         const removeBookButton = document.createElement(`button`);
@@ -60,66 +57,47 @@ function displayBook(index, bookArray) {
     // }
 }
 
-const userInputFields = document.querySelectorAll(`.userInputs`);
-const inputArray = Array.from(userInputFields);
-const addBookButton = document.querySelector(`#addBook`);
+// builds a selector to update the readStatus
+function buildReadStatusSelector(columnToUpdate, index) {
+    const updateStatusSelector = document.createElement(`select`);
+    const option1 = document.createElement(`option`);
+    const option2 = document.createElement(`option`);
+    const option3 = document.createElement(`option`);
+    const option4 = document.createElement(`option`);
+    updateStatusSelector.appendChild(option1);
+    updateStatusSelector.appendChild(option2);
+    updateStatusSelector.appendChild(option3);
+    updateStatusSelector.appendChild(option4);
+    option1.textContent = `Update`
+    option2.textContent = `Read it`;
+    option3.textContent = `Reading it`;
+    option4.textContent = `Wish to read`;
+    columnToUpdate.appendChild(updateStatusSelector);
+    updateStatusSelector.addEventListener(`change`, updateReadStatus);
+}
 
-addBookButton.addEventListener(`click`, (e) => {
-    e.preventDefault();
-    if (inputArray[0].value && inputArray[1].value && inputArray[2].value && inputArray[3].value) {
-        addBookToLibraryArray(inputArray[0].value, inputArray[1].value, inputArray[2].value, inputArray[3].value)
-    }
-})
-
+// removes a book from display, the library array, and calls a function to update the indices on remaining book objects
 function removeBookFromLibrary(e) {
     const bookIndexToRemove = e.currentTarget.id;
     const tr = e.currentTarget.parentElement.parentElement;
     const tbody = tr.parentElement;
-    // console.log(e.currentTarget.id);
-    // console.log(tr);
-    // console.log(tbody);
     myLibrary.splice(bookIndexToRemove, 1);
     tbody.removeChild(tr);
     updateBookIndex(bookIndexToRemove);
 }
-
 function updateBookIndex(indexRemoved) {
     for (let i = indexRemoved; i < myLibrary.length; i++) {
         myLibrary[i].libraryIndex = i;
     }
 };
 
+// this calls the function to build the readStatus selector after updating the read status
 updateReadStatus.prototype = Object.create(Book);
 function updateReadStatus(e) {
     const statusToUpdate = e.currentTarget.parentElement;
-    console.log(statusToUpdate);
     const newReadStatus = e.currentTarget.value;
-    const bookIndexToUpdate = e.currentTarget.id;
+    const bookIndexToUpdate = statusToUpdate.nextElementSibling.firstChild.id;
     myLibrary[bookIndexToUpdate].readStatus = e.currentTarget.value;
     statusToUpdate.textContent = newReadStatus;
-    console.log(myLibrary);
+    buildReadStatusSelector(statusToUpdate);
 }
-
-// userInputFields.forEach((userInputFields) => {
-    // userInputFields.addEventListener(`invalid`, (e) => {
-        // const inputArrayValues = Array.from(inputArray.value);
-        // // console.log(inputArrayValues);
-        // console.log(inputArray[0].value);
-        // console.log(inputArray[1].value);
-        // console.log(inputArray[2].value);
-        // console.log(inputArray[3].value);
-        // console.log(userInputFields.checkValidity());
-        // if (inputArray[0].value && inputArray[1].value && inputArray[2].value && inputArray[3].value) {
-            // console.log(e.target.value);
-            // console.log(inputArray[1].value);
-            // console.log(inputArray[2].value);
-            // console.log(inputArray[3].value);
-            // addBookToLibrary(inputArray[0].value, inputArray[1].value, inputArray[2].value, inputArray[3].value)
-        // }
-    // })
-// })
-
-
-
-
-
