@@ -5,7 +5,8 @@ html, body, main {
     padding: 0px;
 }
 
-main {
+main,
+footer {
     font: 20px sans-serif, Helvetica, Arial;
     margin: auto;
     display: grid;
@@ -15,16 +16,18 @@ main {
 h1 {
     text-align: center;
     color: #C9E4E7;
+    padding: 0px;
+    margin: 5px;
 }
 
-#left-container {
+.left-container {
     display: flex;
     flex-direction: column;
     background-color: #1E1014;
     align-content: center;
 }
 
-#right-container {
+.right-container {
     background-color: #C9E4E7;
     display: flex;
     flex-direction: column;
@@ -37,11 +40,11 @@ h1 {
 }
 
 .bookInfoDisplay {
+    background-color: #1E1014;
     margin: 10px 0px 0px 0px;
     height: 50px;
-    font-size: 18px;
+    font-size: 20px;
     padding: 0px 20px;
-    background-color: black;
 }
 
 *,
@@ -52,7 +55,8 @@ h1 {
 
 input,
 button {
-    margin: 10px 0px 20px 10px;
+    display: block;
+    margin: 30px auto;
     height: 30px;
     width: 80%;
     background-color: #CAFFD0;
@@ -78,13 +82,15 @@ input[type=submit]:hover {
 }
 
 label {
-    color: white;
+    display: block;
+    color: #C9E4E7;
     font-size: 16px;
-    margin: 10px 0px 0px 10px;
+    text-align: center;
 }
 
 select {
-    margin: 0px 0px 20px 10px;
+    display: block;
+    margin: 10px auto;
     height: 30px;
     width: 175px;
     background-color: #CAFFD0;
@@ -95,28 +101,68 @@ select {
 }
 
 #addBook {
-    margin: 20px 0px;
     font-size: 18px;
     height: 50px;
     width: 150px;
-    align-self: center;
 }
 
-/* .newBookInfo {
-    display: flex;
-    height: 50px;
-    font-size: 18px;
-    padding: 0px 20px;
-} */
-
+.statusSelector {
+    height: 30px;
+    width: 100px;
+    margin: 10px auto;
+}
 .removeBook {
-    font-size: 16px;
+    padding: 0px;
+    margin: 0px auto;
+    font-size: 15px;
+    height: 30px;
+    width: 100px;
 }
 
 .removeBook:hover {
     background-color: #B4A0E5;
 }
 
+table {
+    border-collapse: collapse;
+    margin: 0px auto;
+    width: 100%;
+}
+
 thead {
     color: #C9E4E7;
+}
+
+td {
+    padding: 10px 5px 5px 5px;
+    font-size: 16px;
+    border-bottom: 1px solid #1E1014;
+    vertical-align: middle;
+    text-align: center;
+}
+
+tr:last-child td {
+    border-bottom: 0px;
+}
+
+h4 {
+    position: fixed;
+    bottom: 0px;
+    /* top: 50%; */
+    /* left: 50%; */
+    /* margin-top: -50px; */
+    /* margin-left: -100px; */
+    color: #CAFFD0;
+    /* text-align: center; */
+}
+
+a:link,
+a:visited {
+    color: #CAFFD0;
+    text-decoration: none;
+}
+
+a:hover,
+a:active {
+    color: #B4A0E5;
 }

@@ -72,6 +72,7 @@ function buildReadStatusSelector(columnToUpdate, index) {
     option2.textContent = `Read it`;
     option3.textContent = `Reading it`;
     option4.textContent = `Wish to read`;
+    updateStatusSelector.classList.add(`statusSelector`);
     columnToUpdate.appendChild(updateStatusSelector);
     updateStatusSelector.addEventListener(`change`, updateReadStatus);
 }

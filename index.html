@@ -8,7 +8,8 @@
 
     <body>
         <main>
-            <div id="left-container">
+
+            <div class="left-container">
                 <h1>LIBRARY</h1>
                 <form id="addBookForm">
                     <input class="userInputs" type="text" id="title" placeholder="Please enter the title." required>
@@ -23,27 +24,26 @@
                         </select>
                     <input type="submit" id="addBook" value="Add Book">
                 </form>
+                <h4><a href src="https://github.com/jernestmyers">designed by me</a></h4>
             </div>
-            <div id="right-container">
+
+            <div class="right-container">
                 <table>
                     <thead>
                         <tr class="displayHeader">
                             <th class="bookInfoDisplay">TITLE</th>
                             <th class="bookInfoDisplay">AUTHOR</th>
                             <th class="bookInfoDisplay">PAGE LENGTH</th>
-                            <th class="bookInfoDisplay" id="readStatusDisplay">READ STATUS</th>
-                            <th class="bookInfoDisplay" id="removeBook">REMOVE BOOK</th>
+                            <th class="bookInfoDisplay">READ STATUS</th>
+                            <th class="bookInfoDisplay">REMOVE BOOK</th>
                         </tr>
                     <tbody>
                         
                     </tbody>
                 </table>
             </div>
-
         </main>
-        <footer>
 
-        </footer>
         <script src="script.js"></script>
     </body>
 </html>
