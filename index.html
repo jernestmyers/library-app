@@ -10,27 +10,35 @@
         <main>
 
             <div class="left-container">
-                <h1>LIBRARY</h1>
-                <form id="addBookForm">
-                    <input class="userInputs" type="text" id="title" placeholder="Please enter the title." required>
-                    <input class="userInputs" type="text" id="author" placeholder="Please enter the author." required>
-                    <input class="userInputs" type="number" id="page-length" placeholder="Please enter the page length." required>
-                    <label for="read-status">Have you read this book?</label>
-                        <select class="userInputs" name="read-status-prompt" id="read-status" required>
-                            <option value="">Please choose an option.</option>
-                            <option value="Read it">I have read this book.</option>
-                            <option value="Reading it">I am reading this book.</option>
-                            <option value="Wish to read">I wish to read this book.</option>
-                        </select>
-                    <input type="submit" id="addBook" value="Add Book">
-                </form>
-                <h4><a href src="https://github.com/jernestmyers">designed by me</a></h4>
+                <div id="headerInputContainer">
+                    <h1>LIBRARY</h1>
+
+                    <form id="addBookForm">
+                        <input class="userInputs" type="text" id="title" placeholder="Please enter the title." required>
+                        <input class="userInputs" type="text" id="author" placeholder="Please enter the author." required>
+                        <input class="userInputs" type="number" id="page-length" placeholder="Please enter the page length." required>
+                        <label for="read-status">Have you read this book?</label>
+                            <select class="userInputs" name="read-status-prompt" id="read-status" required>
+                                <option value="">Please choose an option.</option>
+                                <option value="Read it">I have read this book.</option>
+                                <option value="Reading it">I am reading this book.</option>
+                                <option value="Wish to read">I wish to read this book.</option>
+                            </select>
+                        <input type="submit" id="addBook" value="Add Book">
+                    </form>
+
+                </div>
+
+                <div id="footerContainer">
+                    <h4><a href src="https://github.com/jernestmyers">designed by me</a></h4>
+                </div>
+
             </div>
 
             <div class="right-container">
                 <table>
                     <thead>
-                        <tr class="displayHeader">
+                        <tr class="bookDisplayHeader">
                             <th class="bookInfoDisplay">TITLE</th>
                             <th class="bookInfoDisplay">AUTHOR</th>
                             <th class="bookInfoDisplay">PAGE LENGTH</th>

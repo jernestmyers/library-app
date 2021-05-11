@@ -17,7 +17,7 @@ h1 {
     text-align: center;
     color: #C9E4E7;
     padding: 0px;
-    margin: 5px;
+    margin: 10px 5px 5px 5px;
 }
 
 .left-container {
@@ -27,6 +27,14 @@ h1 {
     align-content: center;
 }
 
+#headerInputContainer {
+    flex-grow: 1;
+}
+
+#footerContainer {
+    flex-grow: 0;
+}
+
 .right-container {
     background-color: #C9E4E7;
     display: flex;
@@ -34,7 +42,7 @@ h1 {
     align-content: center;
 }
 
-#displayHeader {
+#bookDisplayHeader {
     display: flex;
     justify-content: center;
 }
@@ -146,14 +154,10 @@ tr:last-child td {
 }
 
 h4 {
-    position: fixed;
-    bottom: 0px;
-    /* top: 50%; */
-    /* left: 50%; */
-    /* margin-top: -50px; */
-    /* margin-left: -100px; */
+    padding: 0px;
+    margin-bottom: 20px;
     color: #CAFFD0;
-    /* text-align: center; */
+    text-align: center;
 }
 
 a:link,
