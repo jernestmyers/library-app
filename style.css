@@ -17,7 +17,7 @@ h1 {
     text-align: center;
     color: #C9E4E7;
     padding: 0px;
-    margin: 10px 5px 5px 5px;
+    margin: 7px 5px 5px 5px;
 }
 
 .left-container {
@@ -154,6 +154,7 @@ tr:last-child td {
 }
 
 h4 {
+    font-size: 16px;
     padding: 0px;
     margin-bottom: 20px;
     color: #CAFFD0;
