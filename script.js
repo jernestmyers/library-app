@@ -1,12 +1,15 @@
 let myLibrary = [];
 
-function Book(title, author, pages, readStatus) {
+class LibraryBook {
+    constructor(title, author, pages, readStatus) {
         this.title = title,
         this.author = author,
         this.pages = pages,
         this.readStatus = readStatus,
         this.libraryIndex = myLibrary.length
+    }
 }
+
 
 // submits and resets the inputs for the book info
 const userInputFields = document.querySelectorAll(`.userInputs`);
@@ -24,7 +27,7 @@ const addBookButton = document.querySelector(`#addBook`);
 
 // instantiates the book object constructor
 function addBookToLibraryArray(title, author, pages, readStatus) {
-    const bookToAdd = new Book(title, author, pages, readStatus);
+    const bookToAdd = new LibraryBook(title, author, pages, readStatus);
     myLibrary.push(bookToAdd);
     const bookIndex = (myLibrary.length - 1);
     displayBook(bookIndex, myLibrary);
@@ -93,7 +96,7 @@ function updateBookIndex(indexRemoved) {
 };
 
 // this calls the function to build the readStatus selector after updating the read status
-updateReadStatus.prototype = Object.create(Book);
+// updateReadStatus.prototype = Object.create(Book);
 function updateReadStatus(e) {
     const statusToUpdate = e.currentTarget.parentElement;
     const newReadStatus = e.currentTarget.value;
