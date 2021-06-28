@@ -1,57 +1,93 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>library</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
+  <head>
+    <meta charset="utf-8" />
+    <title>library</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-    <body>
-        <main>
+  <body>
+    <main>
+      <div class="left-container">
+        <div id="headerInputContainer">
+          <h1>LIBRARY</h1>
 
-            <div class="left-container">
-                <div id="headerInputContainer">
-                    <h1>LIBRARY</h1>
-
-                    <form id="addBookForm">
-                        <input class="userInputs" type="text" id="title" placeholder="Please enter the title." required>
-                        <input class="userInputs" type="text" id="author" placeholder="Please enter the author." required>
-                        <input class="userInputs" type="number" id="page-length" placeholder="Please enter the page length." required>
-                        <label for="read-status">Have you read this book?</label>
-                            <select class="userInputs" name="read-status-prompt" id="read-status" required>
-                                <option value="">Please choose an option.</option>
-                                <option value="Read it">I have read this book.</option>
-                                <option value="Reading it">I am reading this book.</option>
-                                <option value="Wish to read">I wish to read this book.</option>
-                            </select>
-                        <input type="submit" id="addBook" value="Add Book">
-                    </form>
-
-                </div>
-
-                <div id="footerContainer">
-                    <h4><a href src="https://github.com/jernestmyers">designed by jem</a></h4>
-                </div>
-
+          <form id="addBookForm">
+            <label for="title">Title<abbr title="required">*</abbr></label>
+            <input
+              class="userInputs"
+              type="text"
+              id="title"
+              placeholder="Please enter the title."
+              autocomplete="off"
+              required
+            />
+            <label for="author">Author<abbr title="required">*</abbr></label>
+            <input
+              class="userInputs"
+              type="text"
+              id="author"
+              placeholder="Please enter the author."
+              autocomplete="off"
+              required
+            />
+            <div id="page-length-input-container">
+              <label for="page-length"
+                >Number of Pages<abbr title="required">*</abbr></label
+              >
+              <input
+                class="userInputs"
+                type="number"
+                id="page-length"
+                placeholder="Please enter the page length."
+                min="1"
+                max="2000"
+                required
+              />
+              <span id="page-input-error"></span>
             </div>
+            <label for="read-status"
+              >Have you read this book?<abbr title="required">*</abbr></label
+            >
+            <select
+              class="userInputs"
+              name="read-status-prompt"
+              id="read-status"
+              required
+            >
+              <option value="">Please choose an option.</option>
+              <option value="Read it">I have read this book.</option>
+              <option value="Reading it">I am reading this book.</option>
+              <option value="Wish to read">I wish to read this book.</option>
+            </select>
+            <input type="submit" id="addBook" value="Add Book" />
+          </form>
+        </div>
 
-            <div class="right-container">
-                <table>
-                    <thead>
-                        <tr class="bookDisplayHeader">
-                            <th class="bookInfoDisplay">TITLE</th>
-                            <th class="bookInfoDisplay">AUTHOR</th>
-                            <th class="bookInfoDisplay">PAGE LENGTH</th>
-                            <th class="bookInfoDisplay">READ STATUS</th>
-                            <th class="bookInfoDisplay">REMOVE BOOK</th>
-                        </tr>
-                    <tbody>
-                        
-                    </tbody>
-                </table>
-            </div>
-        </main>
+        <div id="footerContainer">
+          <h4>
+            <a href src="https://github.com/jernestmyers">designed by jem</a>
+          </h4>
+        </div>
+      </div>
 
-        <script src="script.js"></script>
-    </body>
+      <div class="right-container">
+        <table>
+          <thead>
+            <tr class="bookDisplayHeader">
+              <th class="bookInfoDisplay">TITLE</th>
+              <th class="bookInfoDisplay">AUTHOR</th>
+              <th class="bookInfoDisplay">PAGE LENGTH</th>
+              <th class="bookInfoDisplay">READ STATUS</th>
+              <th class="bookInfoDisplay">REMOVE BOOK</th>
+            </tr>
+          </thead>
+
+          <tbody></tbody>
+        </table>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
 </html>
